@@ -2,6 +2,7 @@
 require File.join(File.dirname(__FILE__), "..", "json")
 require 'test/unit/ui/console/testrunner'
 require 'test/unit/testsuite'
-p JSON.load(['a', 'b', 'c'].to_json)
+# p JSON.load(['a', 'b', 'c'].to_json)
+# p JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10] == "[1,2,{\"a\":3.141},false,true,null,\"4..10\"]"
 
-JSON.generate [1, 2, {"a"=>3.141}, false, true, nil, 4..10] == "[1,2,{\"a\":3.141},false,true,null,\"4..10\"]"
+require File.join(File.dirname(__FILE__), "test_json")

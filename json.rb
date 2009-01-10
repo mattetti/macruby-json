@@ -1,3 +1,4 @@
+# Uses the objc JSON framework http://code.brautaset.org/JSON/
 framework "JSON"
 ext_path = File.join(File.dirname(__FILE__), "core_ext")
 require File.join(ext_path, 'array')
@@ -62,7 +63,21 @@ module JSON
     result = JSON.sbjson.objectWithString(source, error:errorp)
     raise (JSON::ParserError, errorp[0].description) if errorp[0]
     recurse_proc(result, &proc) if proc
-    result
+    ## TEMP LIMITED HACK
+    if result.is_a?(Array)
+      result.map do |obj|
+        if obj.is_a?(NSDecimalNumber)
+          obj = obj.doubleValue
+          obj.to_s.match(/\.[1-9]/) ? obj : obj.to_i
+        else
+          obj
+        end
+      end
+    else
+      result
+    end
+    ##
+    
   end
   
   def recurse_proc(result, &proc)
