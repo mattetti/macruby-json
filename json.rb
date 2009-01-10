@@ -66,12 +66,8 @@ module JSON
     ## TEMP LIMITED HACK
     if result.is_a?(Array)
       result.map do |obj|
-        if obj.is_a?(NSDecimalNumber)
-          obj = obj.doubleValue
-          obj.to_s.match(/\.[1-9]/) ? obj : obj.to_i
-        else
-          obj
-        end
+        obj_d, obj_l = obj.doubleValue, obj.longValue
+        obj_d == obj_l ? obj_l : obj_d
       end
     else
       result

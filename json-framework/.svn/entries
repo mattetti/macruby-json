@@ -1,0 +1,140 @@
+8
+
+dir
+390
+http://json-framework.googlecode.com/svn/trunk
+http://json-framework.googlecode.com/svn
+
+
+
+2008-10-25T20:47:08.041154Z
+388
+sbrautaset
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7ed384e2-a94a-0410-aa17-6fca9987d09a
+
+Source
+dir
+
+dmg.sh
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+3b8aa0ed111c74cc00b47f8e931fa0b6
+2008-08-16T19:43:38.292062Z
+346
+sbrautaset
+has-props
+
+Tests
+dir
+
+JSON.xcodeproj
+dir
+
+Tests-Info.plist
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+de7d98ab859fca79c48de1648cab287d
+2008-04-13T11:27:25.580134Z
+2
+sbrautaset
+
+libjsontests-Info.plist
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+786e8cbfa8304b82e896c9a59b9fe506
+2008-04-13T12:59:06.631694Z
+186
+sbrautaset
+
+INSTALL
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+9dfa8bf91288f63236b38591d521cafa
+2008-10-25T20:47:08.041154Z
+388
+sbrautaset
+
+Docs
+dir
+
+Resources
+dir
+
+bench.m
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+b582074bc39238cedb460235b027f496
+2008-08-21T21:07:48.438383Z
+364
+sbrautaset
+
+JSON-Info.plist
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+cb420efefa7c031a15ccf95f9c81991a
+2008-09-20T13:07:27.899257Z
+383
+sbrautaset
+
+CREDITS
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+d6caa55a4c6f7e467144e92375d09bf1
+2008-05-18T12:49:22.081590Z
+293
+sbrautaset
+
+README
+file
+
+
+
+
+2009-01-10T07:25:31.000000Z
+d5f0e63549f9c4377f62a4f840b24334
+2008-08-16T09:01:21.158500Z
+342
+sbrautaset
+

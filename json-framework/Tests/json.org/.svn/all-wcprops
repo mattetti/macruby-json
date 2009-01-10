@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/210/trunk/Tests/json.org
+END
+1.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/210/trunk/Tests/json.org/1.json
+END
+2.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/210/trunk/Tests/json.org/2.json
+END
+1.plist
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/210/trunk/Tests/json.org/1.plist
+END
+3.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/210/trunk/Tests/json.org/3.json
+END
+2.plist
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/210/trunk/Tests/json.org/2.plist
+END
+4.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/210/trunk/Tests/json.org/4.json
+END
+3.plist
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/210/trunk/Tests/json.org/3.plist
+END
+5.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/210/trunk/Tests/json.org/5.json
+END
+4.plist
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/210/trunk/Tests/json.org/4.plist
+END
