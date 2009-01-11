@@ -1,34 +1,0 @@
-8
-
-dir
-390
-http://json-framework.googlecode.com/svn/trunk/Resources
-http://json-framework.googlecode.com/svn
-
-
-
-2008-08-16T17:29:41.772016Z
-345
-sbrautaset
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-7ed384e2-a94a-0410-aa17-6fca9987d09a
-
-iphonesimulator.sdk
-dir
-
-iphoneos.sdk
-dir
-

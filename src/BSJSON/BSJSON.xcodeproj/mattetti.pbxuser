@@ -1,0 +1,80 @@
+// !$*UTF8*$!
+{
+	0867D690FE84028FC02AAC07 /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeTarget = D2AAC0C605546C1D00DB518D /* BSJSON */;
+		addToTargets = (
+			D2AAC0C605546C1D00DB518D /* BSJSON */,
+		);
+		codeSenseManager = 2BC0D1EC0F19B3420011E45A /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					151,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 253342499;
+			PBXWorkspaceStateSaveDate = 253342499;
+		};
+		sourceControlManager = 2BC0D1EB0F19B3420011E45A /* Source Control */;
+		userBuildSettings = {
+			SYMROOT = /Users/mattetti/Code/macruby/json/lib;
+		};
+	};
+	2BC0D1EB0F19B3420011E45A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	2BC0D1EC0F19B3420011E45A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2BC0D1EF0F19B3E20011E45A /* NSDictionary+BSJSONAdditions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 630}}";
+			sepNavSelRange = "{1124, 0}";
+			sepNavVisRange = "{451, 1048}";
+			sepNavWindowFrame = "{{398, 202}, {750, 558}}";
+		};
+	};
+	2BC0D1F00F19B3E20011E45A /* NSDictionary+BSJSONAdditions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 2758}}";
+			sepNavSelRange = "{1120, 0}";
+			sepNavVisRange = "{448, 1057}";
+			sepNavWindowFrame = "{{262, 26}, {750, 558}}";
+		};
+	};
+	2BC0D1F10F19B3E20011E45A /* NSScanner+BSJSONAdditions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 840}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1117}";
+			sepNavWindowFrame = "{{216, 68}, {750, 558}}";
+		};
+	};
+	D2AAC0C605546C1D00DB518D /* BSJSON */ = {
+		activeExec = 0;
+	};
+}
