@@ -24,25 +24,25 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString *jsonObjectStartString;
-extern NSString *jsonObjectEndString;
-extern NSString *jsonArrayStartString;
-extern NSString *jsonArrayEndString;
-extern NSString *jsonKeyValueSeparatorString;
-extern NSString *jsonValueSeparatorString;
-extern NSString *jsonStringDelimiterString;
-extern NSString *jsonStringEscapedDoubleQuoteString;
-extern NSString *jsonStringEscapedSlashString;
-extern NSString *jsonTrueString;
-extern NSString *jsonFalseString;
-extern NSString *jsonNullString;
+extern NSMutableString *jsonObjectStartString;
+extern NSMutableString *jsonObjectEndString;
+extern NSMutableString *jsonArrayStartString;
+extern NSMutableString *jsonArrayEndString;
+extern NSMutableString *jsonKeyValueSeparatorString;
+extern NSMutableString *jsonValueSeparatorString;
+extern NSMutableString *jsonStringDelimiterString;
+extern NSMutableString *jsonStringEscapedDoubleQuoteString;
+extern NSMutableString *jsonStringEscapedSlashString;
+extern NSMutableString *jsonTrueString;
+extern NSMutableString *jsonFalseString;
+extern NSMutableString *jsonNullString;
 
 
 @interface NSScanner (PrivateBSJSONAdditions)
 
-- (BOOL)scanJSONObject:(NSDictionary **)dictionary;
+- (BOOL)scanJSONObject:(NSMutableDictionary **)dictionary;
 - (BOOL)scanJSONArray:(NSArray **)array;
-- (BOOL)scanJSONString:(NSString **)string;
+- (BOOL)scanJSONString:(NSMutableString **)string;
 - (BOOL)scanJSONValue:(id *)value;
 - (BOOL)scanJSONNumber:(NSNumber **)number;
 

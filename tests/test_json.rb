@@ -3,7 +3,6 @@ require File.join(File.dirname(__FILE__), "..", "json")
 require 'stringio'
 
 class TC_JSON < Test::Unit::TestCase
-  include JSON
 
   def setup
     @ary = [1, "foo", 3.14, 4711.0, 2.718, nil, [1,-2,3], false, true].map do

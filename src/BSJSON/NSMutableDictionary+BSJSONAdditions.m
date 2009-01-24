@@ -21,47 +21,49 @@
 //  appreciated, just to let me know that people are finding my 
 //  code useful. You can reach me at blakeseely@mac.com
 
-#import "NSDictionary+BSJSONAdditions.h"
+#import "NSMutableDictionary+BSJSONAdditions.h"
 #import "NSScanner+BSJSONAdditions.h"
 
-NSString *jsonIndentString = @"\t"; // Modify this string to change how the output formats.
+NSMutableString *jsonIndentString = @""; // Modify this string to change how the output formats.
 const int jsonDoNotIndent = -1;
+
+// Added for macruby
 void Init_BSJSON(void) { }
 
-@implementation NSDictionary (BSJSONAdditions)
+@implementation NSMutableDictionary (BSJSONAdditions)
 
-+ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString
++ (NSMutableDictionary *)dictionaryWithJSONString:(NSMutableString *)jsonString
 {
 	NSScanner *scanner = [[NSScanner alloc] initWithString:jsonString];
-	NSDictionary *dictionary = nil;
+	NSMutableDictionary *dictionary = nil;
 	[scanner scanJSONObject:&dictionary];
 	[scanner release];
 	return dictionary;
 }
 
-- (NSString *)jsonStringValue
+- (NSMutableString *)jsonStringValue
 {
-    return [self jsonStringValueWithIndentLevel:0];
+    return [self jsonStringValueWithIndentLevel:-1];
 }
 
-@end
+/*@end
 
-@implementation NSDictionary (PrivateBSJSONAdditions)
+@implementation NSMutableDictionary (PrivateBSJSONAdditions)*/
 
-- (NSString *)jsonStringValueWithIndentLevel:(int)level
+- (NSMutableString *)jsonStringValueWithIndentLevel:(int)level
 {
 	NSMutableString *jsonString = [[NSMutableString alloc] init];
     [jsonString appendString:jsonObjectStartString];
 	
 	NSEnumerator *keyEnum = [self keyEnumerator];
-	NSString *keyString = [keyEnum nextObject];
-	NSString *valueString;
+	NSMutableString *keyString = [keyEnum nextObject];
+	NSMutableString *valueString;
 	if (keyString != nil) {
 		valueString = [self jsonStringForValue:[self objectForKey:keyString] withIndentLevel:level];
         if (level != jsonDoNotIndent) { // indent before each key
             [jsonString appendString:[self jsonIndentStringForLevel:level]];
         }            
-		[jsonString appendFormat:@" %@ %@ %@", [self jsonStringForString:keyString], jsonKeyValueSeparatorString, valueString];
+		[jsonString appendFormat:@"%@%@%@", [self jsonStringForString:keyString], jsonKeyValueSeparatorString, valueString];
 	}
 	
 	while (keyString = [keyEnum nextObject]) {
@@ -70,7 +72,7 @@ void Init_BSJSON(void) { }
         if (level != jsonDoNotIndent) { // indent before each key
             [jsonString appendFormat:@"%@", [self jsonIndentStringForLevel:level]];
         }
-		[jsonString appendFormat:@" %@ %@ %@", [self jsonStringForString:keyString], jsonKeyValueSeparatorString, valueString];
+		[jsonString appendFormat:@"%@%@%@", [self jsonStringForString:keyString], jsonKeyValueSeparatorString, valueString];
 	}
 	
 	//[jsonString appendString:@"\n"];
@@ -79,15 +81,15 @@ void Init_BSJSON(void) { }
 	return [jsonString autorelease];
 }
 
-- (NSString *)jsonStringForValue:(id)value withIndentLevel:(int)level
+- (NSMutableString *)jsonStringForValue:(id)value withIndentLevel:(int)level
 {	
-	NSString *jsonString;
+	NSMutableString *jsonString;
 	if ([value respondsToSelector:@selector(characterAtIndex:)]) // String
-		jsonString = [self jsonStringForString:(NSString *)value];
+		jsonString = [self jsonStringForString:(NSMutableString *)value];
 	else if ([value respondsToSelector:@selector(keyEnumerator)]) // Dictionary
-		jsonString = [(NSDictionary *)value jsonStringValueWithIndentLevel:(level + 1)];
+		jsonString = [(NSMutableDictionary *)value jsonStringValueWithIndentLevel:(level + 1)];
 	else if ([value respondsToSelector:@selector(objectAtIndex:)]) // Array
-		jsonString = [self jsonStringForArray:(NSArray *)value withIndentLevel:level];
+		jsonString = [self jsonStringForArray:(NSMutableArray *)value withIndentLevel:level];
 	else if (value == [NSNull null]) // null
 		jsonString = jsonNullString;
 	else if ([value respondsToSelector:@selector(objCType)]) { // NSNumber - representing true, false, and any form of numeric
@@ -107,7 +109,7 @@ void Init_BSJSON(void) { }
 	return jsonString;
 }
 
-- (NSString *)jsonStringForArray:(NSArray *)array withIndentLevel:(int)level
+- (NSMutableString *)jsonStringForArray:(NSMutableArray *)array withIndentLevel:(int)level
 {
 	NSMutableString *jsonString = [[NSMutableString alloc] init];
 	[jsonString appendString:jsonArrayStartString];
@@ -125,7 +127,7 @@ void Init_BSJSON(void) { }
 	return [jsonString autorelease];
 }
 
-- (NSString *)jsonStringForString:(NSString *)string
+- (NSMutableString *)jsonStringForString:(NSMutableString *)string
 {
 	NSMutableString *jsonString = [[NSMutableString alloc] init];
 	[jsonString appendString:jsonStringDelimiterString];
@@ -168,7 +170,7 @@ void Init_BSJSON(void) { }
 			break;
 		*/
 		default:
-			[jsonString appendString:[NSString stringWithCharacters:&nextChar length:1]];
+			[jsonString appendString:[NSMutableString stringWithCharacters:&nextChar length:1]];
 			break;
 		}
 	}
@@ -176,7 +178,7 @@ void Init_BSJSON(void) { }
 	return [jsonString autorelease];
 }
 
-- (NSString *)jsonIndentStringForLevel:(int)level
+- (NSMutableString *)jsonIndentStringForLevel:(int)level
 {
     NSMutableString *indentString = [[NSMutableString alloc] init];
     if (level != jsonDoNotIndent) {

@@ -23,23 +23,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString *jsonIndentString;
+extern NSMutableString *jsonIndentString;
 extern const int jsonDoNotIndent;
 
-@interface NSDictionary (BSJSONAdditions)
+@interface NSMutableDictionary (BSJSONAdditions)
 
-+ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString;
-- (NSString *)jsonStringValue;
++ (NSMutableDictionary *)dictionaryWithJSONString:(NSMutableString *)jsonString;
+- (NSMutableString *)jsonStringValue;
 
 @end
 
 
-@interface NSDictionary (PrivateBSJSONAdditions)
+@interface NSMutableDictionary (PrivateBSJSONAdditions)
 
-- (NSString *)jsonStringValueWithIndentLevel:(int)level;
-- (NSString *)jsonStringForValue:(id)value withIndentLevel:(int)level;
-- (NSString *)jsonStringForArray:(NSArray *)array withIndentLevel:(int)level;
-- (NSString *)jsonStringForString:(NSString *)string;
-- (NSString *)jsonIndentStringForLevel:(int)level;
+- (NSMutableString *)jsonStringValueWithIndentLevel:(int)level;
+- (NSMutableString *)jsonStringForValue:(id)value withIndentLevel:(int)level;
+- (NSMutableString *)jsonStringForArray:(NSMutableArray *)array withIndentLevel:(int)level;
+- (NSMutableString *)jsonStringForString:(NSMutableString *)string;
+- (NSMutableString *)jsonIndentStringForLevel:(int)level;
 
 @end

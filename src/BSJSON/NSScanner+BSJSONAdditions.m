@@ -28,29 +28,29 @@
 
 #import "NSScanner+BSJSONAdditions.h"
 
-NSString *jsonObjectStartString = @"{";
-NSString *jsonObjectEndString = @"}";
-NSString *jsonArrayStartString = @"[";
-NSString *jsonArrayEndString = @"]";
-NSString *jsonKeyValueSeparatorString = @":";
-NSString *jsonValueSeparatorString = @",";
-NSString *jsonStringDelimiterString = @"\"";
-NSString *jsonStringEscapedDoubleQuoteString = @"\\\"";
-NSString *jsonStringEscapedSlashString = @"\\\\";
-NSString *jsonTrueString = @"true";
-NSString *jsonFalseString = @"false";
-NSString *jsonNullString = @"null";
+NSMutableString *jsonObjectStartString = @"{";
+NSMutableString *jsonObjectEndString = @"}";
+NSMutableString *jsonArrayStartString = @"[";
+NSMutableString *jsonArrayEndString = @"]";
+NSMutableString *jsonKeyValueSeparatorString = @":";
+NSMutableString *jsonValueSeparatorString = @",";
+NSMutableString *jsonStringDelimiterString = @"\"";
+NSMutableString *jsonStringEscapedDoubleQuoteString = @"\\\"";
+NSMutableString *jsonStringEscapedSlashString = @"\\\\";
+NSMutableString *jsonTrueString = @"true";
+NSMutableString *jsonFalseString = @"false";
+NSMutableString *jsonNullString = @"null";
 
 @implementation NSScanner (PrivateBSJSONAdditions)
 
-- (BOOL)scanJSONObject:(NSDictionary **)dictionary
+- (BOOL)scanJSONObject:(NSMutableDictionary **)dictionary
 {
 	//[self setCharactersToBeSkipped:nil];
 	
 	BOOL result = NO;
 	
     /* START - April 21, 2006 - Updated to bypass irrelevant characters at the beginning of a JSON string */
-    NSString *ignoredString;
+    NSMutableString *ignoredString;
     [self scanUpToString:jsonObjectStartString intoString:&ignoredString];
     /* END - April 21, 2006 */
 
@@ -58,7 +58,7 @@ NSString *jsonNullString = @"null";
 		// TODO: Error condition. For now, return false result, do nothing with the dictionary handle
 	} else {
 		NSMutableDictionary *jsonKeyValues = [[[NSMutableDictionary alloc] init] autorelease];
-		NSString *key = nil;
+		NSMutableString *key = nil;
 		id value;
 		[self scanJSONWhiteSpace];
 		while (([self scanJSONString:&key]) && ([self scanJSONKeyValueSeparator]) && ([self scanJSONValue:&value])) {
@@ -100,12 +100,12 @@ NSString *jsonNullString = @"null";
 	return result;
 }
 
-- (BOOL)scanJSONString:(NSString **)string
+- (BOOL)scanJSONString:(NSMutableString **)string
 {
 	BOOL result = NO;
 	if ([self scanJSONStringDelimiterString]) {
 		NSMutableString *chars = [[[NSMutableString alloc] init] autorelease];
-		NSString *characterFormat = @"%C";
+		NSMutableString *characterFormat = @"%C";
 		
 		// process character by character until we finish the string or reach another double-quote
 		while ((![self isAtEnd]) && ([[self string] characterAtIndex:[self scanLocation]] != '\"')) {
@@ -153,10 +153,10 @@ NSString *jsonNullString = @"null";
 					break;
 				case 'u': // unicode sequence - get string of hex chars, convert to int, convert to unichar, append
 					[self setScanLocation:([self scanLocation] + 2)]; // advance past '\u'
-					NSString *digits = [[self string] substringWithRange:NSMakeRange([self scanLocation], 4)];
+					NSMutableString *digits = [[self string] substringWithRange:NSMakeRange([self scanLocation], 4)];
 					/* START Updated code modified from code fix submitted by Bill Garrison - March 28, 2006 - http://www.standardorbit.net */
                     NSScanner *hexScanner = [NSScanner scannerWithString:digits];
-                    NSString *verifiedHexDigits;
+                    NSMutableString *verifiedHexDigits;
                     NSCharacterSet *hexDigitSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEF"];
 					if (NO == [hexScanner scanCharactersFromSet:hexDigitSet intoString:&verifiedHexDigits])
                         return NO;
@@ -189,7 +189,7 @@ NSString *jsonNullString = @"null";
 		return result;
 	
 		/* this code is more appropriate if you have a separate method to unescape the found string
-			for example, between inputting json and outputting it, it may make more sense to have a category on NSString to perform
+			for example, between inputting json and outputting it, it may make more sense to have a category on NSMutableString to perform
 			escaping and unescaping. Keeping this code and looking into this for a future update.
 		unsigned int searchLength = [[self string] length] - [self scanLocation];
 		unsigned int quoteLocation = [[self string] rangeOfString:jsonStringDelimiterString options:0 range:NSMakeRange([self scanLocation], searchLength)].location;
@@ -218,7 +218,7 @@ NSString *jsonNullString = @"null";
 	BOOL result = NO;
 	
 	[self scanJSONWhiteSpace];
-	NSString *substring = [[self string] substringWithRange:NSMakeRange([self scanLocation], 1)];
+	NSMutableString *substring = [[self string] substringWithRange:NSMakeRange([self scanLocation], 1)];
 	unsigned int trueLocation = [[self string] rangeOfString:jsonTrueString options:0 range:NSMakeRange([self scanLocation], ([[self string] length] - [self scanLocation]))].location;
 	unsigned int falseLocation = [[self string] rangeOfString:jsonFalseString options:0 range:NSMakeRange([self scanLocation], ([[self string] length] - [self scanLocation]))].location;
 	unsigned int nullLocation = [[self string] rangeOfString:jsonNullString options:0 range:NSMakeRange([self scanLocation], ([[self string] length] - [self scanLocation]))].location;
